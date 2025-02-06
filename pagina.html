@@ -1,0 +1,61 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>MI PRIMERA PAGINA</title>
+	<script>
+		
+
+		function numAleatorio(min, max){
+			// GENERADOR DE NUMEROS ALETARIOS
+			let numMin = Math.floor(Math.random() * (max - min) + min)
+			let numMax = Math.floor(Math.random() * (max - min) + min)
+			
+			// OPERACION A REALIZAR
+			let operator = prompt('Deseas trabajar con suma, resta, multiplicacion o division?')
+			if(operator === 'SUMA' || operator === 'suma'){
+				function suma(){
+				let operation = numMin + numMax
+				let test = prompt(`Cual es el valor correcto de ${numMin} + ${numMax}`)
+				test != operation ? alert("Respuesta incorrecta, la respuesta correcta es " + operation) : alert("Tu respuesta es correcta")
+			}
+				suma()
+			}
+			else if(operator === 'RESTA' || operator === 'resta'){
+				function resta(){
+				let operation = numMin - numMax
+				let test = prompt(`Cual es el valor correcto de ${numMin} - ${numMax}`)
+				test != operation ? alert("Respuesta incorrecta, la respuesta correcta es " + operation) : alert("Tu respuesta es correcta")
+			}
+				resta()
+			}
+			else if(operator === 'MULTIPLICACION' || operator === 'multiplicacion'){
+				function multiplicacion(){
+				let operation = numMin * numMax
+				let test = prompt(`Cual es el valor correcto de ${numMin} * ${numMax}`)
+
+				test != operation ? alert("Respuesta incorrecta, la respuesta correcta es " + operation) : alert("Tu respuesta es correcta")
+			}
+				multiplicacion()
+			}
+			else if(operator === 'DIVISION' || operator === 'division'){
+				function division(){
+				let operation = numMin / numMax
+				let test = prompt(`Cual es el valor correcto de ${numMin} / ${numMax}`)
+
+				test != operation ? alert("Respuesta incorrecta, la respuesta correcta es " + operation) : alert("Tu respuesta es correcta")
+			}
+				division()
+			}else{
+				alert('Selecciona un operador corrrecto, Intentemoslo otra vez')
+			}
+			
+		}
+		numAleatorio(10, 45)
+	</script>
+</head>
+<body>
+	<h1>HOLA QUIERO PROGRAMAR</h1>
+	<p>Este es mi primer recurso para programar❤️</p>
+</body>
+</html>
+

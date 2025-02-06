@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOKEPON!</title>
+    <script src="./juegojs/juego.js"></script>
+</head>
+<body>
+    <h1>MOKEPON 🔥💧🌱</h1>
+    
+    <section id="select-mascota">
+        <h2 id="mensaje-mascota">Elegir mascota:</h2>
+        <h2>Mascota rival: <span id="mensaje-mascota-rival"></span> </h2>
+        <input type="radio" name="mascota" id="hegidio">
+        <label for="hegidio">Hegidio</label>
+
+        <input type="radio" name="mascota" id="zafiro">
+        <label for="zafiro">Zafiro</label>
+
+        <input type="radio" name="mascota" id="luchiro">
+        <label for="luchiro">Luchiro</label>
+
+        <input type="radio" name="mascota" id="makaka">
+        <label for="makaka">Makaka</label>
+
+        <input type="radio" name="mascota" id="yuliz">
+        <label for="yuliz">Yuliz</label>
+
+    </section>
+    <br>
+    <button id="boton-select-mascota">Seleccionar</button>
+    <button id="boton-select-mascota-rival">Mascota rival aleatoria </button>
+    <br>
+    <section id="select-ataque">
+        <h2>Elige tu ataque:</h2>
+        
+        <button id="boton-fuego">Fuego 🔥</button>
+        <button id="boton-agua">Agua 💧</button>
+        <button id="boton-tierra">Tierra 🌱</button>
+
+        <p><span id="nombre-vida-mascosta">Nuestra mascota</span> tiene <span>3</span> vidas</p>
+        <p><span id="nombre-vida-mascosta-rival">La mascota rival</span> tiene <span>3</span> vidas</p>
+    </section>
+    <section id="reset-juego">
+        <button id="boton-reset">Reiniciar juego</button>
+    </section>
+</body>
+</html>
