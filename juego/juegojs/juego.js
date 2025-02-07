@@ -113,7 +113,6 @@ window.addEventListener('load', () => {
     })
 
     selectMascotaRival.addEventListener('click', () => {
-
         function selectMascotaRival() {
             let eleccionRival = numAleatorio(1, 5)
 
@@ -152,7 +151,6 @@ window.addEventListener('load', () => {
             }
         }
         selectMascotaRival()
-
     })
 
 
