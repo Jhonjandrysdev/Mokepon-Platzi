@@ -3,6 +3,8 @@ window.addEventListener('load', () => {
     let MascotaSeleccionada
     let MascotaSeleccionadaRival
     let ataqueRival
+    let mensaje = document.createElement('p')
+    let resultadocombate
 
     let hegidio = document.getElementById('hegidio')
     let zafiro = document.getElementById('zafiro')
@@ -23,6 +25,8 @@ window.addEventListener('load', () => {
     let btnAgua = document.getElementById('boton-agua')
     let btnTierra = document.getElementById('boton-tierra')
     // BOTONES 
+
+    //EVENTOS
 
     selectMascosta.addEventListener('click', () => {
         if (hegidio.checked) {
@@ -54,6 +58,69 @@ window.addEventListener('load', () => {
         }
     })
 
+    btnFuego.addEventListener('click', () => {
+        if (MascotaSeleccionada == undefined) {
+            alert('Selecciona primero la mascota')
+        } else {
+            ataqueJugador = 'Fuego🔥'
+            selectAtaqueRival()
+        }
+    })
+    btnAgua.addEventListener('click', () => {
+        if (MascotaSeleccionada == undefined) {
+            alert('Selecciona primero la mascota')
+        } else {
+            ataqueJugador = 'Agua💧'
+            selectAtaqueRival()
+        }
+    })
+    btnTierra.addEventListener('click', () => {
+        if (MascotaSeleccionada == undefined) {
+            alert('Selecciona primero la mascota')
+        } else {
+            ataqueJugador = 'Tierra🌱'
+            selectAtaqueRival()
+        }
+
+    })
+    selectMascotaRival.addEventListener('click', () => {
+        function selectMascotaRival() {
+            let eleccionRival = numAleatorio(1, 5)
+
+            if (eleccionRival == 1) {
+                nombreVidaMascostaRival.textContent = 'Hegidio'
+                mensajeEleccionRival.textContent = 'Hegidio'
+                MascotaSeleccionadaRival = 'Hegidio'
+            }
+            else if (eleccionRival == 2) {
+                nombreVidaMascostaRival.textContent = 'Zafiro'
+                mensajeEleccionRival.textContent = 'Zafiro'
+                MascotaSeleccionadaRival = 'Zafiro'
+
+            }
+            else if (eleccionRival == 3) {
+                nombreVidaMascostaRival.textContent = 'Luchiro'
+                mensajeEleccionRival.textContent = 'Luchiro'
+                MascotaSeleccionadaRival = 'Luchiro'
+
+            }
+            else if (eleccionRival == 4) {
+                nombreVidaMascostaRival.textContent = 'Makaka'
+                mensajeEleccionRival.textContent = 'Makaka'
+                MascotaSeleccionadaRival = 'Makaka'
+
+            }
+            else if (eleccionRival == 5) {
+                nombreVidaMascostaRival.textContent = 'Yuliz'
+                mensajeEleccionRival.textContent = 'Yuliz'
+                MascotaSeleccionadaRival = 'Yuliz'
+            }
+        }
+        selectMascotaRival()
+    })
+
+    // FUNCIONES
+
     function numAleatorio(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
@@ -64,97 +131,46 @@ window.addEventListener('load', () => {
         //CONDICIONALES POR OPERADOR TERNARIO. 
         // MascotaSeleccionadaRival == undefined ? alert('No se ha seleccionado la mascota rival') : eleccionRivalAtaque == 1 ? (ataqueRival = 'Fuego🔥', alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)) : eleccionRivalAtaque == 2 ? (ataqueRival = 'Agua💧', alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)) : eleccionRivalAtaque == 3 ? (ataqueRival = 'Tierra🌱', alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)) : alert('No hay mascota rival')
 
-
         if (MascotaSeleccionadaRival == undefined) {
             alert('No se ha seleccionado la mascota rival')
+            mensaje.innerHTML = ''
         }
         else if (eleccionRivalAtaque == 1) {
             ataqueRival = 'Fuego🔥'
-            alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)
+            //alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)
         }
         else if (eleccionRivalAtaque == 2) {
             ataqueRival = 'Agua💧'
-            alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)
+            //alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)
         }
-        else if (eleccionRivalAtaque == 3) {
+        else {
             ataqueRival = 'Tierra🌱'
-            alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)
+            //alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)
+        }
+        combate()
+    }
+
+    function combate() {
+        if (MascotaSeleccionada == undefined || MascotaSeleccionadaRival == undefined) {
+            mensaje = ''
+        }
+        else if (ataqueJugador === ataqueRival) {
+            mensajeResultado(resultadocombate = 'EMPATE🙈')
+        } else if (ataqueJugador == 'Fuego🔥' && ataqueRival == 'Tierra🌱') {
+            mensajeResultado(resultadocombate = 'GANASTE🎉')
+        } else if (ataqueJugador == 'Agua💧' && ataqueRival == 'Fuego🔥') {
+            mensajeResultado(resultadocombate = 'GANASTE🎉')
+        } else if (ataqueJugador == 'Tierra🌱' && ataqueRival == 'Agua💧') {
+            mensajeResultado(resultadocombate = 'GANASTE🎉')
+        }
+        else {
+            mensajeResultado(resultadocombate = 'PERDISTE😒')
         }
     }
 
-    btnFuego.addEventListener('click', () => {
-        if (MascotaSeleccionada == undefined) {
-            alert('Selecciona primero la mascota')
-        } else {
-            ataqueJugador = 'Fuego🔥'
-            alert(`${MascotaSeleccionada} ha eligido ${ataqueJugador}`)
-            selectAtaqueRival()
-        }
-
-    })
-    btnAgua.addEventListener('click', () => {
-        if (MascotaSeleccionada == undefined) {
-            alert('Selecciona primero la mascota')
-        } else {
-            ataqueJugador = 'Agua💧'
-            alert(`${MascotaSeleccionada} ha eligido ${ataqueJugador}`)
-            selectAtaqueRival()
-        }
-    })
-    btnTierra.addEventListener('click', () => {
-        if (MascotaSeleccionada == undefined) {
-            alert('Selecciona primero la mascota')
-        } else {
-            ataqueJugador = 'Tierra🌱'
-            alert(`${MascotaSeleccionada} ha eligido ${ataqueJugador}`)
-            selectAtaqueRival()
-        }
-
-    })
-
-    selectMascotaRival.addEventListener('click', () => {
-        function selectMascotaRival() {
-            let eleccionRival = numAleatorio(1, 5)
-
-            if (eleccionRival == 1) {
-                alert('Mascota rival: Hegidio')
-                nombreVidaMascostaRival.textContent = 'Hegidio'
-                mensajeEleccionRival.textContent = 'Hegidio'
-                MascotaSeleccionadaRival = 'Hegidio'
-            }
-            else if (eleccionRival == 2) {
-                alert('Mascota rival: Zafiro')
-                nombreVidaMascostaRival.textContent = 'Zafiro'
-                mensajeEleccionRival.textContent = 'Zafiro'
-                MascotaSeleccionadaRival = 'Zafiro'
-
-            }
-            else if (eleccionRival == 3) {
-                alert('Mascota rival: Luchiro')
-                nombreVidaMascostaRival.textContent = 'Luchiro'
-                mensajeEleccionRival.textContent = 'Luchiro'
-                MascotaSeleccionadaRival = 'Luchiro'
-
-            }
-            else if (eleccionRival == 4) {
-                alert('Mascota rival: Makaka')
-                nombreVidaMascostaRival.textContent = 'Makaka'
-                mensajeEleccionRival.textContent = 'Makaka'
-                MascotaSeleccionadaRival = 'Makaka'
-
-            }
-            else if (eleccionRival == 5) {
-                alert('Mascota rival: Yuliz')
-                nombreVidaMascostaRival.textContent = 'Yuliz'
-                mensajeEleccionRival.textContent = 'Yuliz'
-                MascotaSeleccionadaRival = 'Yuliz'
-            }
-        }
-        selectMascotaRival()
-    })
-
-
+    function mensajeResultado() {
+        let containerMensaje = document.getElementById('mensaje-combate')
+        mensaje.innerHTML = `${MascotaSeleccionada} ha elegido atacar con ${ataqueJugador} | ${MascotaSeleccionadaRival} ha elegido atacar con ${ataqueRival} | ${resultadocombate}`
+        containerMensaje.appendChild(mensaje)
+    }
 })
-
-
-
