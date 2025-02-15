@@ -3,10 +3,11 @@ window.addEventListener('load', () => {
     let MascotaSeleccionada
     let MascotaSeleccionadaRival
     let ataqueRival
-    let mensaje = document.createElement('p')
     let resultadocombate
     let vidasMascotaJugador = 3;
     let vidasMascotaRival = 3;
+    let mensaje = document.createElement('p')
+    let containerMensaje = document.getElementById('mensaje-combate')
 
     let hegidio = document.getElementById('hegidio')
     let zafiro = document.getElementById('zafiro')
@@ -14,10 +15,15 @@ window.addEventListener('load', () => {
     let makaka = document.getElementById('makaka')
     let yuliz = document.getElementById('yuliz')
 
+    //MANEJO DE ELECCION DE NOMBRES DE MASCOTAS
     let mensajeEleccion = document.getElementById('mensaje-mascota')
     let mensajeEleccionRival = document.getElementById('mensaje-mascota-rival')
     let nombreVidaMascosta = document.getElementById('nombre-vida-mascosta')
     let nombreVidaMascostaRival = document.getElementById('nombre-vida-mascosta-rival')
+
+    //MANEJO DE SECCIONES
+    let sectionAtaque = document.getElementById('select-ataque')
+    let sectionElection = document.getElementById('select-mascota')
 
     //MANEJO DE VIDAS DE MASCOTAS
     let vidaJugador = document.getElementById('vidas-mascota')
@@ -29,7 +35,11 @@ window.addEventListener('load', () => {
     let btnFuego = document.getElementById('boton-fuego')
     let btnAgua = document.getElementById('boton-agua')
     let btnTierra = document.getElementById('boton-tierra')
-    // BOTONES 
+    let btnReset = document.getElementById('boton-reset')
+
+    //BOTON OCULTO MIENTRAS NO SE SELECCIONE MASCOTAS
+    btnReset.style.display = 'none';
+    sectionAtaque.style.display = 'none';
 
     //EVENTOS
     selectMascosta.addEventListener('click', () => {
@@ -90,36 +100,54 @@ window.addEventListener('load', () => {
         function selectMascotaRival() {
             let eleccionRival = numAleatorio(1, 5)
 
-            if (eleccionRival == 1) {
+            if (MascotaSeleccionada === undefined) {
+                alert('Primero selecciona la mascota del jugador')
+            }
+            else if (eleccionRival == 1) {
                 nombreVidaMascostaRival.textContent = 'Hegidio'
                 mensajeEleccionRival.textContent = 'Hegidio'
                 MascotaSeleccionadaRival = 'Hegidio'
+                sectionAtaque.style.display = 'block';
+                sectionElection.style.display = 'none';
+
             }
             else if (eleccionRival == 2) {
                 nombreVidaMascostaRival.textContent = 'Zafiro'
                 mensajeEleccionRival.textContent = 'Zafiro'
                 MascotaSeleccionadaRival = 'Zafiro'
+                sectionAtaque.style.display = 'block';
+                sectionElection.style.display = 'none';
 
             }
             else if (eleccionRival == 3) {
                 nombreVidaMascostaRival.textContent = 'Luchiro'
                 mensajeEleccionRival.textContent = 'Luchiro'
                 MascotaSeleccionadaRival = 'Luchiro'
+                sectionAtaque.style.display = 'block';
+                sectionElection.style.display = 'none';
 
             }
             else if (eleccionRival == 4) {
                 nombreVidaMascostaRival.textContent = 'Makaka'
                 mensajeEleccionRival.textContent = 'Makaka'
                 MascotaSeleccionadaRival = 'Makaka'
+                sectionAtaque.style.display = 'block';
+                sectionElection.style.display = 'none';
 
             }
             else if (eleccionRival == 5) {
                 nombreVidaMascostaRival.textContent = 'Yuliz'
                 mensajeEleccionRival.textContent = 'Yuliz'
                 MascotaSeleccionadaRival = 'Yuliz'
+                sectionAtaque.style.display = 'block';
+                sectionElection.style.display = 'none';
+
             }
         }
         selectMascotaRival()
+    })
+    btnReset.addEventListener('click', (_) =>{
+        window.location.reload()
     })
 
     // FUNCIONES
@@ -128,10 +156,6 @@ window.addEventListener('load', () => {
     }
     function selectAtaqueRival() {
         let eleccionRivalAtaque = numAleatorio(1, 3)
-
-        //CONDICIONALES POR OPERADOR TERNARIO. 
-        // MascotaSeleccionadaRival == undefined ? alert('No se ha seleccionado la mascota rival') : eleccionRivalAtaque == 1 ? (ataqueRival = 'Fuego🔥', alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)) : eleccionRivalAtaque == 2 ? (ataqueRival = 'Agua💧', alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)) : eleccionRivalAtaque == 3 ? (ataqueRival = 'Tierra🌱', alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)) : alert('No hay mascota rival')
-
         if (MascotaSeleccionadaRival == undefined) {
             alert('No se ha seleccionado la mascota rival')
             mensaje.innerHTML = ''
@@ -149,8 +173,10 @@ window.addEventListener('load', () => {
             //alert(`${MascotaSeleccionadaRival} ha seleccionado para su ataque ${ataqueRival}`)
         }
         combate()
+        
     }
     function combate() {
+        
         if (MascotaSeleccionada == undefined || MascotaSeleccionadaRival == undefined) {
             mensaje = ''
         }
@@ -176,19 +202,22 @@ window.addEventListener('load', () => {
         }
 
         if(vidasMascotaJugador == 0){
-            alert('Has perdido la partida 😒; Quieres volver a intentarlo?')
+            alert('Has perdido la partida 😒')
             btnAgua.disabled = true
             btnFuego.disabled = true
             btnTierra.disabled = true
+            btnReset.style.display = 'flex';
+            mensaje.innerHTML = `Has perdido la partida ${MascotaSeleccionada} 😔; Quieres volver a intentarlo?` 
         } else if (vidasMascotaRival === 0){
             alert('Felicidades, has ganado la partida🎉')
             btnAgua.disabled = true
             btnFuego.disabled = true
-            btnTierra.disabled = true          
+            btnTierra.disabled = true
+            btnReset.style.display = 'flex';
+            mensaje.innerHTML = `Felicidades ${MascotaSeleccionada} 🎉; has ganado la partida`
         }
     }
     function mensajeResultado() {
-        let containerMensaje = document.getElementById('mensaje-combate')
         mensaje.innerHTML = `${MascotaSeleccionada} ha elegido atacar con ${ataqueJugador} | ${MascotaSeleccionadaRival} ha elegido atacar con ${ataqueRival} | ${resultadocombate}`
         containerMensaje.appendChild(mensaje)
     }
