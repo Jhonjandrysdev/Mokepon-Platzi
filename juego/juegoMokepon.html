@@ -5,40 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MOKEPON!</title>
     <script src="./juegojs/juego.js"></script>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1 class="title">MOKEPON 🔥💧🌱</h1>
-
     <section id="names-mascotas">
-        <h2 id="mensaje-mascota">Elegir mascota:</h2>
-        <h2>Mascota rival: <span id="mensaje-mascota-rival"></span></h2>
+      <h1 class="title"><a href="https://fontmeme.com/es/fuente-pokemon/"><img src="https://fontmeme.com/permalink/250220/e8b384b94397dbb41af26b1d56968d14.png" alt="fuente-pokemon"></a></h1>
+      <h2 >Mascota seleccionada: <span id="mensaje-mascota"> </span></h2>
+      <h2>Mascota rival: <span id="mensaje-mascota-rival"> </span></h2>
     </section>
 
     <section id="select-mascota">
       <input type="radio" name="mascota" id="hegidio" />
-      <label for="hegidio">Hegidio</label>
+      <label for="hegidio">
+        <div class="tarjeta">
+          <p>Hegidio</p>
+          <img
+            src="https://areajugones.sport.es/wp-content/uploads/2023/05/jigglypuff.png"
+            alt="imagen de un pokemon."
+          />
+        </div>
+      </label>
 
       <input type="radio" name="mascota" id="zafiro" />
-      <label for="zafiro">Zafiro</label>
+      <label  for="zafiro"
+        ><div class="tarjeta">
+          <p>Zafiro</p>
+          <img
+            src="https://static.pokemonpets.com/images/monsters-images-800-800/1-Bulbasaur.webp"
+            alt="imagen de un pokemon."
+          /></div
+      ></label>
 
       <input type="radio" name="mascota" id="luchiro" />
-      <label for="luchiro">Luchiro</label>
+      <label for="luchiro"
+        ><div class="tarjeta">
+          <p>Luchiro</p>
+          <img
+            src="https://areajugones.sport.es/wp-content/uploads/2023/04/rowlet.png.webp"
+            alt="imagen de un pokemon."
+          /></div
+      ></label>
 
       <input type="radio" name="mascota" id="makaka" />
-      <label for="makaka">Makaka</label>
+      <label for="makaka"
+        ><div class="tarjeta">
+          <p>Makaka</p>
+          <img
+            src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2014/03/288149-origen-todos-nombres-pokemon-i.png?tf=3840x"
+            alt="imagen de un pokemon."
+          /></div
+      ></label>
 
       <input type="radio" name="mascota" id="yuliz" />
-      <label for="yuliz">Yuliz</label>
-    <br>
-    <br>
-    <button id="boton-select-mascota">Seleccionar</button>
-    <button id="boton-select-mascota-rival">Mascota rival aleatoria</button>
+      <label for="yuliz"
+        ><div class="tarjeta">
+          <p>Yuliz</p>
+          <img
+            src="https://cdn.pixabay.com/photo/2021/12/26/17/31/pokemon-6895600_1280.png"
+            alt="imagen de un pokemon."
+          /></div
+      ></label>
     </section>
-    
+
+    <section id="section-buttons-select">
+      <button id="boton-select-mascota">Seleccionar</button>
+      <button id="boton-select-mascota-rival">Mascota rival aleatoria</button>
+    </section>
+
     <section id="select-ataque">
       <h2>Elige tu ataque:</h2>
-      <p>
+      <p id="buttons-ataque">
         <button id="boton-fuego">Fuego 🔥</button>
         <button id="boton-agua">Agua 💧</button>
         <button id="boton-tierra">Tierra 🌱</button>
@@ -48,10 +84,8 @@
         <span id="vidas-mascota">3</span> vidas
       </p>
       <p>
-        <span id="nombre-vida-mascosta-rival">La mascota rival</span> tiene <span
-          id="vidas-mascota-rival"
-          >3</span
-        >
+        <span id="nombre-vida-mascosta-rival">La mascota rival</span> tiene
+        <span id="vidas-mascota-rival">3</span>
         vidas
       </p>
     </section>
