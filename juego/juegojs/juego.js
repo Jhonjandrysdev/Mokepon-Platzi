@@ -24,6 +24,7 @@ window.addEventListener('load', () => {
     //MANEJO DE SECCIONES
     let sectionAtaque = document.getElementById('select-ataque')
     let sectionElection = document.getElementById('select-mascota')
+    let sectionBotones = document.getElementById('section-buttons-select')
 
     //MANEJO DE VIDAS DE MASCOTAS
     let vidaJugador = document.getElementById('vidas-mascota')
@@ -44,27 +45,27 @@ window.addEventListener('load', () => {
     //EVENTOS
     selectMascosta.addEventListener('click', () => {
         if (hegidio.checked) {
-            mensajeEleccion.textContent = 'Mascota elegida: Hegidio'
+            mensajeEleccion.textContent = ' Hegidio'
             nombreVidaMascosta.textContent = 'Hegidio'
             MascotaSeleccionada = 'Hegidio'
         }
         else if (zafiro.checked) {
-            mensajeEleccion.textContent = 'Mascota elegida: Zafiro'
+            mensajeEleccion.textContent = ' Zafiro'
             nombreVidaMascosta.textContent = 'Zafiro'
             MascotaSeleccionada = 'Zafiro'
         }
         else if (luchiro.checked) {
-            mensajeEleccion.textContent = 'Mascota elegida: Luchiro'
+            mensajeEleccion.textContent = ' Luchiro'
             nombreVidaMascosta.textContent = 'Luchiro'
             MascotaSeleccionada = 'Luchiro'
         }
         else if (makaka.checked) {
-            mensajeEleccion.textContent = 'Mascota elegida: Makaka'
+            mensajeEleccion.textContent = ' Makaka'
             nombreVidaMascosta.textContent = 'Makaka'
             MascotaSeleccionada = 'Makaka'
         }
         else if (yuliz.checked) {
-            mensajeEleccion.textContent = 'Mascota elegida: Yuliz'
+            mensajeEleccion.textContent = ' Yuliz'
             nombreVidaMascosta.textContent = 'Yuliz'
             MascotaSeleccionada = 'Yuliz'
         } else {
@@ -104,43 +105,48 @@ window.addEventListener('load', () => {
                 alert('Primero selecciona la mascota del jugador')
             }
             else if (eleccionRival == 1) {
-                nombreVidaMascostaRival.textContent = 'Hegidio'
+                nombreVidaMascostaRival.textContent = ' Hegidio'
                 mensajeEleccionRival.textContent = 'Hegidio'
                 MascotaSeleccionadaRival = 'Hegidio'
-                sectionAtaque.style.display = 'block';
+                sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
+                sectionBotones.style.display = 'none';
 
             }
             else if (eleccionRival == 2) {
-                nombreVidaMascostaRival.textContent = 'Zafiro'
+                nombreVidaMascostaRival.textContent = ' Zafiro'
                 mensajeEleccionRival.textContent = 'Zafiro'
                 MascotaSeleccionadaRival = 'Zafiro'
-                sectionAtaque.style.display = 'block';
+                sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
+                sectionBotones.style.display = 'none';
 
             }
             else if (eleccionRival == 3) {
-                nombreVidaMascostaRival.textContent = 'Luchiro'
+                nombreVidaMascostaRival.textContent = ' Luchiro'
                 mensajeEleccionRival.textContent = 'Luchiro'
                 MascotaSeleccionadaRival = 'Luchiro'
-                sectionAtaque.style.display = 'block';
+                sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
+                sectionBotones.style.display = 'none';
 
             }
             else if (eleccionRival == 4) {
-                nombreVidaMascostaRival.textContent = 'Makaka'
+                nombreVidaMascostaRival.textContent = ' Makaka'
                 mensajeEleccionRival.textContent = 'Makaka'
                 MascotaSeleccionadaRival = 'Makaka'
-                sectionAtaque.style.display = 'block';
+                sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
+                sectionBotones.style.display = 'none';
 
             }
             else if (eleccionRival == 5) {
-                nombreVidaMascostaRival.textContent = 'Yuliz'
+                nombreVidaMascostaRival.textContent = ' Yuliz'
                 mensajeEleccionRival.textContent = 'Yuliz'
                 MascotaSeleccionadaRival = 'Yuliz'
-                sectionAtaque.style.display = 'block';
+                sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
+                sectionBotones.style.display = 'none';
 
             }
         }
