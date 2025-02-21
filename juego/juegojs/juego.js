@@ -212,6 +212,7 @@ window.addEventListener('load', () => {
             btnAgua.disabled = true
             btnFuego.disabled = true
             btnTierra.disabled = true
+            vidaJugador.style.color = 'red'
             btnReset.style.display = 'flex';
             mensaje.innerHTML = `Has perdido la partida ${MascotaSeleccionada} 😔; Quieres volver a intentarlo?` 
         } else if (vidasMascotaRival === 0){
@@ -219,6 +220,7 @@ window.addEventListener('load', () => {
             btnAgua.disabled = true
             btnFuego.disabled = true
             btnTierra.disabled = true
+            vidaEnemigo.style.color = 'red'
             btnReset.style.display = 'flex';
             mensaje.innerHTML = `Felicidades ${MascotaSeleccionada} 🎉; has ganado la partida`
         }
