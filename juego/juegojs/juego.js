@@ -25,6 +25,7 @@ window.addEventListener('load', () => {
     let sectionAtaque = document.getElementById('select-ataque')
     let sectionElection = document.getElementById('select-mascota')
     let sectionBotones = document.getElementById('section-buttons-select')
+    let sectionBotonesAtaque = document.getElementById('buttons-ataque')
 
     //MANEJO DE VIDAS DE MASCOTAS
     let vidaJugador = document.getElementById('vidas-mascota')
@@ -46,7 +47,7 @@ window.addEventListener('load', () => {
     selectMascosta.addEventListener('click', () => {
         if (hegidio.checked) {
             mensajeEleccion.textContent = ' Hegidio'
-            nombreVidaMascosta.textContent = 'Hegidio'
+            nombreVidaMascosta.textContent = ' Hegidio'
             MascotaSeleccionada = 'Hegidio'
         }
         else if (zafiro.checked) {
@@ -56,17 +57,17 @@ window.addEventListener('load', () => {
         }
         else if (luchiro.checked) {
             mensajeEleccion.textContent = ' Luchiro'
-            nombreVidaMascosta.textContent = 'Luchiro'
+            nombreVidaMascosta.textContent = ' Luchiro'
             MascotaSeleccionada = 'Luchiro'
         }
         else if (makaka.checked) {
             mensajeEleccion.textContent = ' Makaka'
-            nombreVidaMascosta.textContent = 'Makaka'
+            nombreVidaMascosta.textContent = ' Makaka'
             MascotaSeleccionada = 'Makaka'
         }
         else if (yuliz.checked) {
             mensajeEleccion.textContent = ' Yuliz'
-            nombreVidaMascosta.textContent = 'Yuliz'
+            nombreVidaMascosta.textContent = ' Yuliz'
             MascotaSeleccionada = 'Yuliz'
         } else {
             alert('Selecciona una mascota')
@@ -209,17 +210,13 @@ window.addEventListener('load', () => {
 
         if(vidasMascotaJugador == 0){
             alert('Has perdido la partida 😒')
-            btnAgua.disabled = true
-            btnFuego.disabled = true
-            btnTierra.disabled = true
+            sectionBotonesAtaque.style.display = 'none'
             vidaJugador.style.color = 'red'
             btnReset.style.display = 'flex';
             mensaje.innerHTML = `Has perdido la partida ${MascotaSeleccionada} 😔; Quieres volver a intentarlo?` 
         } else if (vidasMascotaRival === 0){
             alert('Felicidades, has ganado la partida🎉')
-            btnAgua.disabled = true
-            btnFuego.disabled = true
-            btnTierra.disabled = true
+            sectionBotonesAtaque.style.display = 'none'
             vidaEnemigo.style.color = 'red'
             btnReset.style.display = 'flex';
             mensaje.innerHTML = `Felicidades ${MascotaSeleccionada} 🎉; has ganado la partida`

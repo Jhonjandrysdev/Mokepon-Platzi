@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sigmar&display=swap');
+
+body{
+    font-family: "Fredoka", serif;
+    font-style: normal;
+    background-color: #003092
+}
+button{
+    font-family: "Fredoka", serif;
+    font-style: normal;
+}
 .title{
     display: flex;
 }
@@ -9,7 +20,7 @@
 }
 #select-mascota{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 5px;
@@ -38,8 +49,8 @@
     gap: 10px;
 }
 .tarjeta{
-    width: 200px;
-    height: 230px;
+    width: 150;
+    height: 190px;
     background-color: rgb(129, 33, 218);
     border-radius: 10px;
     padding: 10px;
@@ -50,8 +61,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: snow;
+}
+.tarjeta:hover{
+    background-color: #FFAB5B;
+    color: azure;
+    font-weight: 900;
 }
 .tarjeta > img{
     width: 150px;
@@ -64,16 +79,14 @@
     background-color: #1955de;
     border-radius: 6px;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: 2px solid rgb(0, 0, 0);
     font-weight: 400;
     font-size: 18px;
 }
 #boton-select-mascota:hover{
-    background-color: #ee10e3;
+    background-color: #FFAB5B;
     color: azure;
     font-weight: 900;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 #boton-select-mascota-rival{
     width: 250px;
@@ -81,16 +94,14 @@
     background-color: #1955de;
     border-radius: 6px;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: 2px solid rgb(0, 0, 0);
     font-weight: 400;
     font-size: 18px;
 }
 #boton-select-mascota-rival:hover{
-    background-color: #ee10e3;
+    background-color: #FFAB5B;
     color: azure;
     font-weight: 900;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 #boton-reset{
     width: 250px;
@@ -98,7 +109,6 @@
     background-color: #1955de;
     border-radius: 6px;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: 2px solid rgb(0, 0, 0);
     font-weight: 400;
     font-size: 18px;
@@ -108,75 +118,66 @@
 
 }
 #boton-reset:hover{
-    background-color: #ee10e3;
+    background-color: #00879E;
     color: azure;
     font-weight: 900;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 #boton-fuego{
     width: 110px;
     height: 35px;
-    background-color: #1955de;
+    background-color: #FFAB5B;
     border-radius: 6px;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: 2px solid rgb(0, 0, 0);
     font-weight: 400;
     font-size: 18px;
 }
 #boton-fuego:hover{
-    background-color: #ee10e3;
+    background-color: #00879E;
     color: azure;
     font-weight: 900;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 #boton-agua{
     width: 110px;
     height: 35px;
-    background-color: #1955de;
+    background-color: #FFAB5B;
     border-radius: 6px;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: 2px solid rgb(0, 0, 0);
     font-weight: 400;
     font-size: 18px;
 }
 #boton-agua:hover{
-    background-color: #ee10e3;
+    background-color: #00879E;
     color: azure;
     font-weight: 900;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 #boton-tierra{
     width: 110px;
     height: 35px;
-    background-color: #1955de;
+    background-color: #FFAB5B;
     border-radius: 6px;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: 2px solid rgb(0, 0, 0);
     font-weight: 400;
     font-size: 18px;
 }
 #boton-tierra:hover{
-    background-color: #ee10e3;
+    background-color: #00879E;
     color: azure;
     font-weight: 900;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 input{
     display: none;
 }
 input:checked + label > .tarjeta{
-    background-color: #ee10e3;
+    background-color: #FFAB5B;
     color: azure;
     font-weight: 900;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 h2 > span{
     color: red;
     font-weight: 900;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 section > h2{
     display: flex;
@@ -184,7 +185,15 @@ section > h2{
     align-items: center;
     text-align: center;
     gap: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#names-mascotas > h2{
+    color: snow;
+}
+#container-acount > p{
+    color: snow;
+}
+#select-ataque > h2{
+    color: snow;
 }
 #container-acount{
     display: flex;
@@ -194,16 +203,23 @@ section > h2{
     align-items: center;
 }
 #mensaje-contador{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
+}
+#mensaje-mascota{
+    color: #FFAB5B;
+}
+#mensaje-mascota-rival{
+    color: #FFAB5B;
 }
 #mensaje-combate{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
+    color: snow;
 }
 #vidas-mascota-rival{
-    color: #1955de;
+    color: #FFAB5B;
+    font-weight: 700;
 }
 #vidas-mascota{
-    color: #1955de;
+    color: #FFAB5B;
+    font-weight: 700;
 }
