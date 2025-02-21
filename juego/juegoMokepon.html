@@ -9,8 +9,14 @@
   </head>
   <body>
     <section id="names-mascotas">
-      <h1 class="title"><a href="https://fontmeme.com/es/fuente-pokemon/"><img src="https://fontmeme.com/permalink/250220/e8b384b94397dbb41af26b1d56968d14.png" alt="fuente-pokemon"></a></h1>
-      <h2 >Mascota seleccionada: <span id="mensaje-mascota"> </span></h2>
+      <h1 class="title">
+        <a href="https://fontmeme.com/es/fuente-pokemon/"
+          ><img
+            src="https://fontmeme.com/permalink/250220/e8b384b94397dbb41af26b1d56968d14.png"
+            alt="fuente-pokemon"
+        /></a>
+      </h1>
+      <h2>Mascota seleccionada: <span id="mensaje-mascota"> </span></h2>
       <h2>Mascota rival: <span id="mensaje-mascota-rival"> </span></h2>
     </section>
 
@@ -26,7 +32,7 @@
         </div>
       </label>
       <input type="radio" name="mascota" id="zafiro" />
-      <label  for="zafiro"
+      <label for="zafiro"
         ><div class="tarjeta">
           <p>Zafiro</p>
           <img
@@ -74,15 +80,16 @@
         <button id="boton-agua">Agua 💧</button>
         <button id="boton-tierra">Tierra 🌱</button>
       </p>
-      <p>
-        <span id="nombre-vida-mascosta">Nuestra mascota</span> tiene
-        <span id="vidas-mascota">3</span> vidas
+      <div id="container-acount">
+      <p id="mensaje-contador">
+        <span id="nombre-vida-mascosta">Nuestra mascota</span> tiene <span id="vidas-mascota">3</span> vidas
       </p>
-      <p>
-        <span id="nombre-vida-mascosta-rival">La mascota rival</span> tiene
-        <span id="vidas-mascota-rival">3</span>
+      ||
+      <p id="mensaje-contador">
+        <span id="nombre-vida-mascosta-rival">La mascota rival</span> tiene <span id="vidas-mascota-rival">3</span>
         vidas
       </p>
+    </div>
     </section>
     <section id="mensaje-combate"></section>
     <section id="reset-juego">
