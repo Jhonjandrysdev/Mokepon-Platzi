@@ -224,6 +224,7 @@ section > h2{
 #mensaje-combate{
     font-size: 20px;
     color: snow;
+    text-align: center;
 }
 #vidas-mascota-rival{
     color: #FFAB5B;
@@ -232,6 +233,86 @@ section > h2{
 #vidas-mascota{
     color: #FFAB5B;
     font-weight: 700;
+}
+@media screen and (max-width: 768px){
+    .tarjeta{
+        width: 120px;
+        height: 150px;
+    }
+    .tarjeta > img{
+        width: 100px;
+        height: 100px;
+    }
+    #boton-select-mascota{
+        width: 200px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-select-mascota-rival{
+        width: 200px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-reset{
+        width: 200px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-fuego{
+        width: 90px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-agua{
+        width: 90px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-tierra{
+        width: 90px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #section-buttons-select{
+        flex-direction: column;
+    }
+    #select-mascota{
+        flex-direction: column;
+    }
+    #names-mascotas{
+        flex-direction: column;
+    }
+    #mensaje-combate{
+        flex-direction: column;
+        text-align: center;
+    }
+    #reset-juego{
+        flex-direction: column;
+    }
+    #vidas-mascota-rival{
+        font-size: 20px;
+    }
+    #vidas-mascota{
+        font-size: 20px;
+    }
+    #mensaje-combate{
+        font-size: 20px;
+    }
+    #mensaje-mascota{
+        font-size: 20px;
+    }
+    #mensaje-mascota-rival{
+        font-size: 20px;
+    }
+    #mensaje-contador{
+        font-size: 20px;
+    }
+    #container-acount > p{
+        font-size: 20px;
+    }
+    #names-mascotas > h2{
+        font-size: 20px;
+    }
 }
 #container-box-mensaje{
     width: 90%;
