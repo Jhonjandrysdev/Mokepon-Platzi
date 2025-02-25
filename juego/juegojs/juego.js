@@ -8,6 +8,10 @@ window.addEventListener('load', () => {
     let vidasMascotaRival = 3;
     let mensaje = document.createElement('p')
     let containerMensaje = document.getElementById('mensaje-combate')
+    let mensajeAtaqueSeleccionado = document.createElement('p')
+    let mensajeAtaqueSeleccionadoRival = document.createElement('p')
+    let containerMensajeAtaque = document.getElementById('container-acount')
+    let containerMensajeAtaqueRival = document.getElementById('container-acount-rival')
 
     let hegidio = document.getElementById('hegidio')
     let zafiro = document.getElementById('zafiro')
@@ -42,6 +46,7 @@ window.addEventListener('load', () => {
     //BOTON OCULTO MIENTRAS NO SE SELECCIONE MASCOTAS
     btnReset.style.display = 'none';
     sectionAtaque.style.display = 'none';
+    containerMensaje.style.display = 'none'
 
     //EVENTOS
     selectMascosta.addEventListener('click', () => {
@@ -112,6 +117,7 @@ window.addEventListener('load', () => {
                 sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
                 sectionBotones.style.display = 'none';
+                containerMensaje.style.display = 'flex';
 
             }
             else if (eleccionRival == 2) {
@@ -121,6 +127,7 @@ window.addEventListener('load', () => {
                 sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
                 sectionBotones.style.display = 'none';
+                containerMensaje.style.display = 'flex'
 
             }
             else if (eleccionRival == 3) {
@@ -130,6 +137,7 @@ window.addEventListener('load', () => {
                 sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
                 sectionBotones.style.display = 'none';
+                containerMensaje.style.display = 'flex'
 
             }
             else if (eleccionRival == 4) {
@@ -139,6 +147,7 @@ window.addEventListener('load', () => {
                 sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
                 sectionBotones.style.display = 'none';
+                containerMensaje.style.display = 'flex'
 
             }
             else if (eleccionRival == 5) {
@@ -148,6 +157,7 @@ window.addEventListener('load', () => {
                 sectionAtaque.style.display = 'flex';
                 sectionElection.style.display = 'none';
                 sectionBotones.style.display = 'none';
+                containerMensaje.style.display = 'flex'
 
             }
         }
@@ -189,21 +199,31 @@ window.addEventListener('load', () => {
         }
         else if (ataqueJugador === ataqueRival) {
             mensajeResultado(resultadocombate = 'EMPATE🙈')
+            mensajeAtaque()
+            mensajeAtaqueRival()
         } else if (ataqueJugador == 'Fuego🔥' && ataqueRival == 'Tierra🌱') {
             mensajeResultado(resultadocombate = 'GANASTE🎉')
+            mensajeAtaque()
+            mensajeAtaqueRival()
             vidasMascotaRival --
             vidaEnemigo.textContent = vidasMascotaRival
         } else if (ataqueJugador == 'Agua💧' && ataqueRival == 'Fuego🔥') {
             mensajeResultado(resultadocombate = 'GANASTE🎉')
+            mensajeAtaque()
+            mensajeAtaqueRival()
             vidasMascotaRival --
             vidaEnemigo.textContent = vidasMascotaRival
         } else if (ataqueJugador == 'Tierra🌱' && ataqueRival == 'Agua💧') {
             mensajeResultado(resultadocombate = 'GANASTE🎉')
+            mensajeAtaque()
+            mensajeAtaqueRival()
             vidasMascotaRival --
             vidaEnemigo.textContent = vidasMascotaRival
         }
         else {
             mensajeResultado(resultadocombate = 'PERDISTE😒')
+            mensajeAtaque()
+            mensajeAtaqueRival()
             vidasMascotaJugador --
             vidaJugador.textContent = vidasMascotaJugador
         }
@@ -223,7 +243,16 @@ window.addEventListener('load', () => {
         }
     }
     function mensajeResultado() {
-        mensaje.innerHTML = `${MascotaSeleccionada} ha elegido atacar con ${ataqueJugador} | ${MascotaSeleccionadaRival} ha elegido atacar con ${ataqueRival} | ${resultadocombate}`
+        mensaje.innerHTML = `${resultadocombate}`
         containerMensaje.appendChild(mensaje)
+        mensaje.style.fontSize = '25px'
+    }
+    function mensajeAtaque(){
+        mensajeAtaqueSeleccionado.innerHTML = `Ha elegido atacar con ${ataqueJugador}`  
+        containerMensajeAtaque.appendChild(mensajeAtaqueSeleccionado)
+    }
+    function mensajeAtaqueRival(){
+        mensajeAtaqueSeleccionadoRival.innerHTML = `Ha elegido atacar con ${ataqueRival}`
+        containerMensajeAtaqueRival.appendChild(mensajeAtaqueSeleccionadoRival)
     }
 })
