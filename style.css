@@ -68,6 +68,7 @@ button{
     background-color: #FFAB5B;
     color: azure;
     font-weight: 900;
+    cursor: pointer;
 }
 .tarjeta > img{
     width: 150px;
@@ -87,6 +88,7 @@ button{
 #boton-select-mascota:hover{
     background-color: #FFAB5B;
     color: azure;
+    cursor: pointer;
     font-weight: 900;
 }
 #boton-select-mascota-rival{
@@ -102,6 +104,7 @@ button{
 #boton-select-mascota-rival:hover{
     background-color: #FFAB5B;
     color: azure;
+    cursor: pointer;
     font-weight: 900;
 }
 #boton-reset{
@@ -124,12 +127,12 @@ button{
     font-weight: 900;
 }
 #boton-fuego{
-    width: 110px;
-    height: 35px;
+    width: 120px;
+    height: 38px;
     background-color: #FFAB5B;
-    border-radius: 6px;
+    border-radius: 20px;
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
 }
@@ -137,14 +140,15 @@ button{
     background-color: #00879E;
     color: azure;
     font-weight: 900;
+    cursor: pointer;
 }
 #boton-agua{
-    width: 110px;
-    height: 35px;
+    width: 120px;
+    height: 38px;
     background-color: #FFAB5B;
-    border-radius: 6px;
+    border-radius: 20px;
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
 }
@@ -152,14 +156,15 @@ button{
     background-color: #00879E;
     color: azure;
     font-weight: 900;
+    cursor: pointer;
 }
 #boton-tierra{
-    width: 110px;
-    height: 35px;
+    width: 120px;
+    height: 38px;
     background-color: #FFAB5B;
-    border-radius: 6px;
+    border-radius: 20px;
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
 }
@@ -167,6 +172,7 @@ button{
     background-color: #00879E;
     color: azure;
     font-weight: 900;
+    cursor: pointer;
 }
 input{
     display: none;
@@ -200,13 +206,11 @@ section > h2{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 #container-acount-rival{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 #mensaje-contador{
     font-size: 20px;
@@ -234,14 +238,12 @@ section > h2{
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    gap: 20px;
 }
 #box-mensaje{
     background-color: bisque;
-    width: 30%;
-    height: 190px;
+    width: 40%;
     border-radius: 10px;
-    margin: 10px;
+    margin: 7px;
     display: flex;
     justify-content: start;
     flex-direction: column;
