@@ -47,6 +47,7 @@ button{
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin-top: 20px;
 }
 .tarjeta{
     width: 150;
@@ -56,7 +57,7 @@ button{
     padding: 10px;
     text-align: center;
     margin: 5px;
-    border: 2px solid black;
+    border: 2px solid snow;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +68,7 @@ button{
     background-color: #FFAB5B;
     color: azure;
     font-weight: 900;
+    cursor: pointer;
 }
 .tarjeta > img{
     width: 150px;
@@ -79,13 +81,14 @@ button{
     background-color: #1955de;
     border-radius: 6px;
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
 }
 #boton-select-mascota:hover{
     background-color: #FFAB5B;
     color: azure;
+    cursor: pointer;
     font-weight: 900;
 }
 #boton-select-mascota-rival{
@@ -94,13 +97,14 @@ button{
     background-color: #1955de;
     border-radius: 6px;
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
 }
 #boton-select-mascota-rival:hover{
     background-color: #FFAB5B;
     color: azure;
+    cursor: pointer;
     font-weight: 900;
 }
 #boton-reset{
@@ -123,12 +127,12 @@ button{
     font-weight: 900;
 }
 #boton-fuego{
-    width: 110px;
-    height: 35px;
+    width: 120px;
+    height: 38px;
     background-color: #FFAB5B;
-    border-radius: 6px;
+    border-radius: 20px;
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
 }
@@ -136,14 +140,15 @@ button{
     background-color: #00879E;
     color: azure;
     font-weight: 900;
+    cursor: pointer;
 }
 #boton-agua{
-    width: 110px;
-    height: 35px;
+    width: 120px;
+    height: 38px;
     background-color: #FFAB5B;
-    border-radius: 6px;
+    border-radius: 20px;
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
 }
@@ -151,14 +156,15 @@ button{
     background-color: #00879E;
     color: azure;
     font-weight: 900;
+    cursor: pointer;
 }
 #boton-tierra{
-    width: 110px;
-    height: 35px;
+    width: 120px;
+    height: 38px;
     background-color: #FFAB5B;
-    border-radius: 6px;
+    border-radius: 20px;
     color: white;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
 }
@@ -166,6 +172,7 @@ button{
     background-color: #00879E;
     color: azure;
     font-weight: 900;
+    cursor: pointer;
 }
 input{
     display: none;
@@ -197,10 +204,13 @@ section > h2{
 }
 #container-acount{
     display: flex;
-    flex-direction: row;
-    gap: 10px ;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+}
+#container-acount-rival{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 #mensaje-contador{
     font-size: 20px;
@@ -303,4 +313,23 @@ section > h2{
     #names-mascotas > h2{
         font-size: 20px;
     }
+}
+#container-box-mensaje{
+    width: 90%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+#box-mensaje{
+    background-color: bisque;
+    width: 40%;
+    border-radius: 10px;
+    margin: 7px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(129, 33, 218);
+    border: 2px solid snow;
+    text-align: center;
 }
