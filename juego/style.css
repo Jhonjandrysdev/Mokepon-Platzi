@@ -1,9 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sigmar&display=swap');
 
+@media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+}
+
 body{
     font-family: "Fredoka", serif;
     font-style: normal;
-    background-color: #003092
+    background-color: #003092;
+    background-image: url('./images/canyon-Photoroom.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+
 }
 button{
     font-family: "Fredoka", serif;
@@ -24,7 +36,6 @@ button{
     justify-content: center;
     align-items: center;
     gap: 5px;
-    margin: 20px;
 }
 #select-ataque{
     flex-direction: column;
@@ -193,23 +204,27 @@ section > h2{
     text-align: center;
     gap: 5px;
 }
+#names-mascotas img{
+    width: 350px;
+    height: 150px;
+}
 #names-mascotas > h2{
-    color: snow;
+    color: #FFAB5B;
 }
 #container-acount > p{
-    color: snow;
+    color: #FFAB5B;
 }
 #select-ataque > h2{
-    color: snow;
+    color: #FFAB5B;
 }
 #mensaje-contador{
     font-size: 20px;
 }
 #mensaje-mascota{
-    color: #FFAB5B;
+    color: #1955de;
 }
 #mensaje-mascota-rival{
-    color: #FFAB5B;
+    color: #1955de;
 }
 #mensaje-combate{
     font-size: 20px;
@@ -217,92 +232,12 @@ section > h2{
     text-align: center;
 }
 #vidas-mascota-rival{
-    color: #FFAB5B;
+    color: #1955de;
     font-weight: 700;
 }
 #vidas-mascota{
-    color: #FFAB5B;
+    color: #1955de;
     font-weight: 700;
-}
-@media screen and (max-width: 768px){
-    .tarjeta{
-        width: 120px;
-        height: 150px;
-    }
-    .tarjeta > img{
-        width: 100px;
-        height: 100px;
-    }
-    #boton-select-mascota{
-        width: 200px;
-        height: 30px;
-        font-size: 15px;
-    }
-    #boton-select-mascota-rival{
-        width: 200px;
-        height: 30px;
-        font-size: 15px;
-    }
-    #boton-reset{
-        width: 200px;
-        height: 30px;
-        font-size: 15px;
-    }
-    #boton-fuego{
-        width: 90px;
-        height: 30px;
-        font-size: 15px;
-    }
-    #boton-agua{
-        width: 90px;
-        height: 30px;
-        font-size: 15px;
-    }
-    #boton-tierra{
-        width: 90px;
-        height: 30px;
-        font-size: 15px;
-    }
-    #section-buttons-select{
-        flex-direction: column;
-    }
-    #select-mascota{
-        flex-direction: column;
-    }
-    #names-mascotas{
-        flex-direction: column;
-    }
-    #mensaje-combate{
-        flex-direction: column;
-        text-align: center;
-    }
-    #reset-juego{
-        flex-direction: column;
-    }
-    #vidas-mascota-rival{
-        font-size: 20px;
-    }
-    #vidas-mascota{
-        font-size: 20px;
-    }
-    #mensaje-combate{
-        font-size: 20px;
-    }
-    #mensaje-mascota{
-        font-size: 20px;
-    }
-    #mensaje-mascota-rival{
-        font-size: 20px;
-    }
-    #mensaje-contador{
-        font-size: 20px;
-    }
-    #container-acount > p{
-        font-size: 20px;
-    }
-    #names-mascotas > h2{
-        font-size: 20px;
-    }
 }
 #container-box-mensaje{
     width: 90%;
@@ -341,4 +276,89 @@ section > h2{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+@media screen and (max-width: 870px){
+    .tarjeta{
+        width: 140px;
+        height: 150px;
+    }
+    .tarjeta > img{
+        width: 100px;
+        height: 100px;
+    }
+    #boton-select-mascota{
+        width: 200px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-select-mascota-rival{
+        width: 200px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-reset{
+        width: 200px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-fuego{
+        width: 90px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-agua{
+        width: 90px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #boton-tierra{
+        width: 90px;
+        height: 30px;
+        font-size: 15px;
+    }
+    #section-buttons-select{
+        flex-direction: flex;
+    }
+    #select-mascota{
+        flex-direction: flex;
+        flex-wrap: wrap;
+    }
+    #names-mascotas{
+        flex-direction: column;
+    }
+    #mensaje-combate{
+        flex-direction: column;
+        text-align: center;
+    }
+    #reset-juego{
+        flex-direction: column;
+    }
+    #vidas-mascota-rival{
+        font-size: 20px;
+    }
+    #vidas-mascota{
+        font-size: 20px;
+    }
+    #mensaje-combate{
+        font-size: 20px;
+    }
+    #mensaje-mascota{
+        font-size: 20px;
+    }
+    #mensaje-mascota-rival{
+        font-size: 20px;
+    }
+    #mensaje-contador{
+        font-size: 20px;
+    }
+    #names-mascotas img{
+        width: 280;
+        height: 140px;
+    }
+    #container-acount > p{
+        font-size: 20px;
+    }
+    #names-mascotas > h2{
+        font-size: 20px;
+    }
 }
