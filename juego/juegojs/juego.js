@@ -244,6 +244,8 @@ window.addEventListener('load', () => {
         mensaje.innerHTML = `${resultadocombate}`
         containerMensaje.appendChild(mensaje)
         mensaje.style.fontSize = '25px'
+        mensaje.style.width = '90%'
+        mensaje.style.textAlign = 'center'
     }
     function mensajeAtaque(){
         mensajeAtaqueSeleccionado.innerHTML = `Ha elegido atacar con ${ataqueJugador}`  
