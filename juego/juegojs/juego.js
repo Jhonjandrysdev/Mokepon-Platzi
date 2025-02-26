@@ -10,8 +10,8 @@ window.addEventListener('load', () => {
     let containerMensaje = document.getElementById('mensaje-combate')
     let mensajeAtaqueSeleccionado = document.createElement('p')
     let mensajeAtaqueSeleccionadoRival = document.createElement('p')
-    let containerMensajeAtaque = document.getElementById('container-acount')
-    let containerMensajeAtaqueRival = document.getElementById('container-acount-rival')
+    let containerMensajeAtaque = document.getElementById('box-mensaje')
+    let containerMensajeAtaqueRival = document.getElementById('box-mensaje-rival')
 
     let hegidio = document.getElementById('hegidio')
     let zafiro = document.getElementById('zafiro')
@@ -229,13 +229,11 @@ window.addEventListener('load', () => {
         }
 
         if(vidasMascotaJugador == 0){
-            alert('Has perdido la partida 😒')
             sectionBotonesAtaque.style.display = 'none'
             vidaJugador.style.color = 'red'
             btnReset.style.display = 'flex';
             mensaje.innerHTML = `Has perdido la partida ${MascotaSeleccionada} 😔; Quieres volver a intentarlo?` 
         } else if (vidasMascotaRival === 0){
-            alert('Felicidades, has ganado la partida🎉')
             sectionBotonesAtaque.style.display = 'none'
             vidaEnemigo.style.color = 'red'
             btnReset.style.display = 'flex';
