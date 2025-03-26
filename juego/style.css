@@ -35,7 +35,6 @@ button{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5px;
 }
 #select-ataque{
     flex-direction: column;
@@ -95,6 +94,18 @@ button{
     border: 2px solid snow;
     font-weight: 400;
     font-size: 18px;
+}
+#box-ataque{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+#box-ataque-rival{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 #boton-select-mascota:hover{
     background-color: #FFAB5B;
@@ -252,7 +263,7 @@ section > h2{
 }
 #box-mensaje{
     background-color: bisque;
-    width: 40%;
+    width: 35%;
     border-radius: 10px;
     margin: 7px;
     display: flex;
@@ -268,7 +279,7 @@ section > h2{
 }
 #box-mensaje-rival{
     background-color: bisque;
-    width: 40%;
+    width: 35%;
     border-radius: 10px;
     margin: 7px;
     display: flex;
@@ -282,7 +293,7 @@ section > h2{
     flex-direction: column;
     justify-content: center;
 }
-@media screen and (max-width: 870px){
+@media screen and (max-width: 937px){
     .tarjeta{
         width: 140px;
         height: 150px;
@@ -365,5 +376,12 @@ section > h2{
     }
     #names-mascotas > h2{
         font-size: 20px;
+    }
+    #box-mensaje{
+        width: 45%;
+    }
+    #box-mensaje-rival{
+        width: 45%;
+
     }
 }
