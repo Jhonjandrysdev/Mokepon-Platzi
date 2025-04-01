@@ -293,6 +293,61 @@ section > h2{
     flex-direction: column;
     justify-content: center;
 }
+#canvas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#canvas > h1{
+    color: snow;
+    font-size: 28px;
+}
+#mapa{
+    border: 5px solid snow;
+    width: 450px;
+    height: 200px;
+    background-color: rgb(129, 33, 218);
+    margin-bottom: 15px;
+}
+#moverPersonaje{
+    width: 130px;
+    height: 40px;
+    background-color: #1955de;
+    border-radius: 20px;
+    color: white;
+    border: 2px solid snow;
+    font-weight: 400;
+    font-size: 18px;
+}
+#moverPersonaje:hover{
+    background-color: #FFAB5B;
+    color: azure;
+    cursor: pointer;
+    font-weight: 900;
+}
+#mover-personaje-vertical{
+    width: 130px;
+    height: 40px;
+    background-color: #1955de;
+    border-radius: 20px;
+    color: white;
+    border: 2px solid snow;
+    font-weight: 400;
+    font-size: 18px;
+}
+#mover-personaje-vertical:hover{
+    background-color: #FFAB5B;
+    color: azure;
+    cursor: pointer;
+    font-weight: 900;
+}
+#container-buttons-move{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
 @media screen and (max-width: 937px){
     .tarjeta{
         width: 140px;
@@ -383,5 +438,9 @@ section > h2{
     #box-mensaje-rival{
         width: 45%;
 
+    }
+    #mapa{
+        width: 300px;
+        height: 200px;
     }
 }
