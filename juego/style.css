@@ -310,7 +310,7 @@ section > h2{
     background-color: rgb(129, 33, 218);
     margin-bottom: 15px;
 }
-#moverPersonaje{
+#mover-personaje-adelante{
     width: 130px;
     height: 40px;
     background-color: #1955de;
@@ -320,13 +320,13 @@ section > h2{
     font-weight: 400;
     font-size: 18px;
 }
-#moverPersonaje:hover{
+#mover-personaje-adelante:hover{
     background-color: #FFAB5B;
     color: azure;
     cursor: pointer;
     font-weight: 900;
 }
-#mover-personaje-vertical{
+#mover-personaje-abajo{
     width: 130px;
     height: 40px;
     background-color: #1955de;
@@ -336,7 +336,39 @@ section > h2{
     font-weight: 400;
     font-size: 18px;
 }
-#mover-personaje-vertical:hover{
+#mover-personaje-abajo:hover{
+    background-color: #FFAB5B;
+    color: azure;
+    cursor: pointer;
+    font-weight: 900;
+}
+#mover-personaje-arriba{
+    width: 130px;
+    height: 40px;
+    background-color: #1955de;
+    border-radius: 20px;
+    color: white;
+    border: 2px solid snow;
+    font-weight: 400;
+    font-size: 18px;
+}
+#mover-personaje-arriba:hover{
+    background-color: #FFAB5B;
+    color: azure;
+    cursor: pointer;
+    font-weight: 900;
+}
+#mover-personaje-atras{
+    width: 130px;
+    height: 40px;
+    background-color: #1955de;
+    border-radius: 20px;
+    color: white;
+    border: 2px solid snow;
+    font-weight: 400;
+    font-size: 18px;
+}
+#mover-personaje-atras:hover{
     background-color: #FFAB5B;
     color: azure;
     cursor: pointer;
@@ -442,5 +474,9 @@ section > h2{
     #mapa{
         width: 300px;
         height: 200px;
+    }
+    #container-buttons-move{
+        display: flex;
+        flex-wrap: wrap;
     }
 }

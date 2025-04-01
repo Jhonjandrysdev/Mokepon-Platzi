@@ -36,8 +36,10 @@ window.addEventListener('load', () => {
     // MANEJO DE BOTONES MEDIANTE EL DOM
     const selectMascosta = document.getElementById('boton-select-mascota')
     const btnReset = document.getElementById('boton-reset')
-    const btnMovimiento = document.getElementById('moverPersonaje')
-    const btnMovimientoVertical = document.getElementById('mover-personaje-vertical')
+    const btnMovimiento = document.getElementById('mover-personaje-adelante')
+    const btnMovimientoAbajo = document.getElementById('mover-personaje-abajo')
+    const btnMovimientoArriba = document.getElementById('mover-personaje-arriba')
+    const btnMovimientoAtras = document.getElementById('mover-personaje-atras')
 
     //BOTON OCULTO MIENTRAS NO SE SELECCIONE MASCOTAS
     btnReset.style.display = 'none';
@@ -282,16 +284,73 @@ window.addEventListener('load', () => {
         arrayMokepon.forEach((mokepon) => {
             if (MascotaSeleccionada === mokepon.nombre) {
                 mokepon.x = mokepon.x + 5
+                console.log(mokepon.x)
                 pintarPersonaje()
+
+                if (mokepon.x == 100) {
+                    btnMovimiento.disabled = true
+                    btnMovimiento.style.backgroundColor = '#cccccc'
+                }
+                if(mokepon.x > 0){
+                    btnMovimientoAtras.disabled = false
+                    btnMovimientoAtras.style.backgroundColor = '#1955de'
+                }
             }
         })
     }) 
-    btnMovimientoVertical.addEventListener('click', () => {
+    btnMovimientoAtras.addEventListener('click', () => {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.x = mokepon.x - 5
+                pintarPersonaje()
+
+                if(mokepon.x == 0) {
+                    btnMovimientoAtras.disabled = true
+                    btnMovimientoAtras.style.backgroundColor = '#cccccc'
+                }
+                else if (mokepon.x < 100) {
+                    btnMovimiento.disabled = false
+                    btnMovimiento.style.backgroundColor = '#1955de'
+                }
+            }
+        })
+    } )
+    btnMovimientoAbajo.addEventListener('click', () => {
         arrayMokepon.forEach((mokepon) => {
             if (MascotaSeleccionada === mokepon.nombre) {
                 mokepon.y = mokepon.y + 5
+                console.log(mokepon.y)
                 pintarPersonaje()
+
+                if (mokepon.y == 100) {
+                    btnMovimientoAbajo.disabled = true
+                    btnMovimientoAbajo.style.backgroundColor = '#cccccc'
+                }
+                if(mokepon.y > 0){
+                    btnMovimientoArriba.disabled = false
+                    btnMovimientoArriba.style.backgroundColor = '#1955de'
+                }
+
             }
+        })
+    })
+    btnMovimientoArriba.addEventListener('click', () => {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.y = mokepon.y - 5
+                console.log(mokepon.y)
+                pintarPersonaje()
+
+                if(mokepon.y <= 0) {
+                    btnMovimientoArriba.disabled = true
+                    btnMovimientoArriba.style.backgroundColor = '#cccccc'
+                }
+                else if (mokepon.y < 100) {
+                    btnMovimientoAbajo.disabled = false
+                    btnMovimientoAbajo.style.backgroundColor = '#1955de'
+                }
+            }
+            
         })
     })
 })
