@@ -4,7 +4,6 @@ window.addEventListener('load', () => {
     let MascotaSeleccionada
     let MascotaSeleccionadaRival
     let ataqueRival = []
-
     let VictoriasJugador = 0;
     let VictoriasRival = 0;
 
@@ -25,6 +24,10 @@ window.addEventListener('load', () => {
     const sectionElection = document.getElementById('select-mascota')
     const sectionBotones = document.getElementById('section-buttons-select')
     const sectionBotonesAtaque = document.getElementById('buttons-ataque')
+    const sectionCanvas = document.getElementById('canvas')
+
+    //MAPA DE CANVAS
+    const canvas = document.getElementById('mapa')
 
     //MANEJO DE VIDAS DE MASCOTAS
     const vidaJugador = document.getElementById('vidas-mascota')
@@ -33,19 +36,28 @@ window.addEventListener('load', () => {
     // MANEJO DE BOTONES MEDIANTE EL DOM
     const selectMascosta = document.getElementById('boton-select-mascota')
     const btnReset = document.getElementById('boton-reset')
+    const btnMovimiento = document.getElementById('moverPersonaje')
+    const btnMovimientoVertical = document.getElementById('mover-personaje-vertical')
 
     //BOTON OCULTO MIENTRAS NO SE SELECCIONE MASCOTAS
     btnReset.style.display = 'none';
     sectionAtaque.style.display = 'none';
     containerMensaje.style.display = 'none'
+    sectionCanvas.style.display = 'none'
 
     // CLASE CREADA PARA CREAR MOKEPONES
     class Mokepon {
         constructor(nombre, imagen, vidas) {
             this.nombre = nombre,
-                this.imagen = imagen,
-                this.vidas = vidas
+            this.imagen = imagen,
+            this.vidas = vidas
             this.ataques = []
+            this.x = 20
+            this.y = 30
+            this.ancho = 50
+            this.alto = 50
+            this.mapaFoto = new Image()
+            this.mapaFoto.src = imagen
         }
     }
 
@@ -61,21 +73,22 @@ window.addEventListener('load', () => {
         { nombre: '💧', id: 'boton-agua' },
     )
     Zafiro.ataques.push({ nombre: '🌱', id: 'boton-tierra' },
-        { nombre: '🔥', id: 'boton-fuego' }, 
+        { nombre: '🔥', id: 'boton-fuego' },
     )
     Luchiro.ataques.push({ nombre: '💧', id: 'boton-agua' },
-        { nombre: '🌱', id: 'boton-tierra' }, 
+        { nombre: '🌱', id: 'boton-tierra' },
     )
     Makaka.ataques.push({ nombre: '🔥', id: 'boton-fuego' },
-        { nombre: '💧', id: 'boton-agua' },  
+        { nombre: '💧', id: 'boton-agua' },
     )
     Yuliz.ataques.push({ nombre: '🌱', id: 'boton-tierra' },
-        { nombre: '🔥', id: 'boton-fuego' }, 
+        { nombre: '🔥', id: 'boton-fuego' },
     )
-
+    
     //ARRAY DE MOKEPONES
     let arrayMokepon = []
     arrayMokepon.push(Hegidio, Zafiro, Luchiro, Makaka, Yuliz)
+    console.log(arrayMokepon)
 
     // ELEMENTOS PARA CREACION DE TARJETA
     arrayMokepon.forEach((mokepon) => {
@@ -101,31 +114,45 @@ window.addEventListener('load', () => {
     })
 
     // FUNCIONES
+    function pintarPersonaje(){
+        let lienzoMapa = canvas.getContext('2d')
+        lienzoMapa.imageSmoothingEnabled = true;
+        lienzoMapa.imageSmoothingQuality = 'high';
+    
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                lienzoMapa.clearRect(0, 0, canvas.width, canvas.height)
+                lienzoMapa.drawImage(mokepon.mapaFoto, mokepon.x, mokepon.y, mokepon.ancho, mokepon.alto)
+            }
+        })
+    }
     function numAleatorio(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
     function selectMascotaRival() {
-        let eleccionRival = numAleatorio(0, arrayMokepon.length -1)
+
+        let eleccionRival = numAleatorio(0, arrayMokepon.length - 1)
 
         if (MascotaSeleccionada === undefined) {
             alert('Primero selecciona la mascota del jugador')
         }
         else {
             logicAtaqueRival = arrayMokepon[eleccionRival].ataques
-            nombreVidaMascostaRival.innerHTML =  arrayMokepon[eleccionRival].nombre
+            nombreVidaMascostaRival.innerHTML = arrayMokepon[eleccionRival].nombre
             mensajeEleccionRival.innerHTML = arrayMokepon[eleccionRival].nombre
             MascotaSeleccionadaRival = arrayMokepon[eleccionRival].nombre
-            sectionAtaque.style.display = 'flex';
+            sectionCanvas.style.display = 'flex';
+            sectionAtaque.style.display = 'none';
             sectionElection.style.display = 'none';
             sectionBotones.style.display = 'none';
-            containerMensaje.style.display = 'flex';
+            containerMensaje.style.display = 'none';
         }
 
     }
     function selectAtaqueRival() {
-        let eleccionRivalAtaque = numAleatorio(0, logicAtaqueRival.length -1)
+        let eleccionRivalAtaque = numAleatorio(0, logicAtaqueRival.length - 1)
         arrayMokepon.forEach((mokepon) => {
-            if (MascotaSeleccionadaRival === mokepon.nombre){
+            if (MascotaSeleccionadaRival === mokepon.nombre) {
                 mokepon.ataques.forEach((ataque, index) => {
                     if (index === eleccionRivalAtaque) {
                         ataqueRival.push(ataque.nombre)
@@ -136,44 +163,44 @@ window.addEventListener('load', () => {
         })
         pelea()
     }
-    function pelea(){
+    function pelea() {
         if (ataqueJugador.length === 5) {
             combate()
             sectionAtaque.style.display = 'none'
         }
     }
-    function indexEleccion(jugador, rival){
+    function indexEleccion(jugador, rival) {
 
-    const mensajeAtkJugador = document.createElement('p');
-    const mensajeAtkRival = document.createElement('p');
+        const mensajeAtkJugador = document.createElement('p');
+        const mensajeAtkRival = document.createElement('p');
 
-    mensajeAtkJugador.textContent = ataqueJugador[jugador]
-    mensajeAtkRival.textContent = ataqueRival[rival];
+        mensajeAtkJugador.textContent = ataqueJugador[jugador]
+        mensajeAtkRival.textContent = ataqueRival[rival];
 
-    containerAtaque.appendChild(mensajeAtkJugador);
-    containerAtaqueRival.appendChild(mensajeAtkRival);
+        containerAtaque.appendChild(mensajeAtkJugador);
+        containerAtaqueRival.appendChild(mensajeAtkRival);
 
 
-   
+
     }
     function combate() {
 
         for (let index = 0; index < ataqueJugador.length; index++) {
             if (ataqueJugador[index] === ataqueRival[index]) {
                 indexEleccion(index, index)
-            }else if (ataqueJugador[index] == '🔥' && ataqueRival[index] == '🌱') {
+            } else if (ataqueJugador[index] == '🔥' && ataqueRival[index] == '🌱') {
                 indexEleccion(index, index)
                 VictoriasJugador++
                 vidaJugador.textContent = VictoriasJugador
-            }else if(ataqueJugador[index] == '💧' && ataqueRival[index] == '🔥' ){
+            } else if (ataqueJugador[index] == '💧' && ataqueRival[index] == '🔥') {
                 indexEleccion(index, index)
                 VictoriasJugador++
                 vidaJugador.textContent = VictoriasJugador
-            }else if(ataqueJugador[index] == '🌱' && ataqueRival[index] == '💧'){
+            } else if (ataqueJugador[index] == '🌱' && ataqueRival[index] == '💧') {
                 indexEleccion(index, index)
                 VictoriasJugador++
                 vidaJugador.textContent = VictoriasJugador
-            }else{
+            } else {
                 indexEleccion(index, index)
                 VictoriasRival++
                 vidaEnemigo.textContent = VictoriasRival
@@ -185,13 +212,13 @@ window.addEventListener('load', () => {
             sectionBotonesAtaque.style.display = 'none'
             mensaje.innerHTML = `Ha habido un empate ${MascotaSeleccionada} 😊; Quieres volver aintentarlo?`
 
-        }else if (VictoriasJugador > VictoriasRival) {
+        } else if (VictoriasJugador > VictoriasRival) {
             sectionBotonesAtaque.style.display = 'none'
             vidaEnemigo.style.color = 'red'
             btnReset.style.display = 'flex';
             mensaje.innerHTML = `Felicidades ${MascotaSeleccionada} 🎉; has ganado la partida`
 
-        } else{
+        } else {
             sectionBotonesAtaque.style.display = 'none'
             vidaJugador.style.color = 'red'
             btnReset.style.display = 'flex';
@@ -209,7 +236,7 @@ window.addEventListener('load', () => {
     //EVENTOS
     selectMascosta.addEventListener('click', () => {
         let inputChecked = document.querySelector('input[name="mascota"]:checked')
-        
+
         if (inputChecked) {
             mensajeEleccion.textContent = inputChecked.id
             nombreVidaMascosta.textContent = inputChecked.id
@@ -224,19 +251,19 @@ window.addEventListener('load', () => {
                         sectionBotonesAtaque.appendChild(button)
                         if (button.id === 'boton-fuego') {
                             button.addEventListener('click', () => {
-                                ataqueJugador.push('🔥') 
+                                ataqueJugador.push('🔥')
                                 selectAtaqueRival()
                                 console.log(ataqueJugador)
                             })
                         } else if (button.id === 'boton-agua') {
                             button.addEventListener('click', () => {
-                                ataqueJugador.push('💧') 
+                                ataqueJugador.push('💧')
                                 selectAtaqueRival()
                                 console.log(ataqueJugador)
                             })
                         } else {
                             button.addEventListener('click', () => {
-                                ataqueJugador.push('🌱') 
+                                ataqueJugador.push('🌱')
                                 selectAtaqueRival()
                                 console.log(ataqueJugador)
                             })
@@ -251,5 +278,20 @@ window.addEventListener('load', () => {
     btnReset.addEventListener('click', (_) => {
         window.location.reload()
     })
-
+    btnMovimiento.addEventListener('click', () => {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.x = mokepon.x + 5
+                pintarPersonaje()
+            }
+        })
+    }) 
+    btnMovimientoVertical.addEventListener('click', () => {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.y = mokepon.y + 5
+                pintarPersonaje()
+            }
+        })
+    })
 })
