@@ -6,7 +6,8 @@ window.addEventListener('load', () => {
     let ataqueRival = []
     let VictoriasJugador = 0;
     let VictoriasRival = 0;
-
+    let fondoMapa = new Image()
+    fondoMapa.src = 'https://i.pinimg.com/474x/43/e7/89/43e78957ab636946acf0498862b67c11.jpg'
 
     const mensaje = document.createElement('p')
     const containerMensaje = document.getElementById('mensaje-combate')
@@ -51,8 +52,8 @@ window.addEventListener('load', () => {
     class Mokepon {
         constructor(nombre, imagen, vidas) {
             this.nombre = nombre,
-            this.imagen = imagen,
-            this.vidas = vidas
+                this.imagen = imagen,
+                this.vidas = vidas
             this.ataques = []
             this.x = 20
             this.y = 30
@@ -60,6 +61,10 @@ window.addEventListener('load', () => {
             this.alto = 50
             this.mapaFoto = new Image()
             this.mapaFoto.src = imagen
+            this.fotorival = new Image()
+            this.fotorival.src = imagen
+            this.velocidadX = 0
+            this.velocidadY = 0
         }
     }
 
@@ -86,7 +91,7 @@ window.addEventListener('load', () => {
     Yuliz.ataques.push({ nombre: '🌱', id: 'boton-tierra' },
         { nombre: '🔥', id: 'boton-fuego' },
     )
-    
+
     //ARRAY DE MOKEPONES
     let arrayMokepon = []
     arrayMokepon.push(Hegidio, Zafiro, Luchiro, Makaka, Yuliz)
@@ -116,15 +121,31 @@ window.addEventListener('load', () => {
     })
 
     // FUNCIONES
-    function pintarPersonaje(){
+    function pintarMapa() {
         let lienzoMapa = canvas.getContext('2d')
         lienzoMapa.imageSmoothingEnabled = true;
         lienzoMapa.imageSmoothingQuality = 'high';
-    
+
         arrayMokepon.forEach((mokepon) => {
             if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.x = mokepon.x + mokepon.velocidadX
+                mokepon.y = mokepon.y + mokepon.velocidadY
                 lienzoMapa.clearRect(0, 0, canvas.width, canvas.height)
+                lienzoMapa.drawImage(fondoMapa, 0, 0, canvas.width, canvas.height)
                 lienzoMapa.drawImage(mokepon.mapaFoto, mokepon.x, mokepon.y, mokepon.ancho, mokepon.alto)
+                pintarRival()
+            }
+        })
+    }
+    function pintarRival(){
+        let lienzoMapa = canvas.getContext('2d')
+        lienzoMapa.imageSmoothingEnabled = true;
+        lienzoMapa.imageSmoothingQuality = 'high';
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionadaRival === mokepon.nombre) {
+                mokepon.x = mokepon.x + mokepon.velocidadX
+                mokepon.y = mokepon.y + mokepon.velocidadY
+                lienzoMapa.drawImage(mokepon.fotorival, 230, 30, mokepon.ancho, mokepon.alto)
             }
         })
     }
@@ -144,12 +165,86 @@ window.addEventListener('load', () => {
             mensajeEleccionRival.innerHTML = arrayMokepon[eleccionRival].nombre
             MascotaSeleccionadaRival = arrayMokepon[eleccionRival].nombre
             sectionCanvas.style.display = 'flex';
+            intervalo = setInterval(pintarMapa, 30)
+            window.addEventListener('keydown', teclaPresionada)
+            window.addEventListener('keyup', detenerMovimiento)
             sectionAtaque.style.display = 'none';
             sectionElection.style.display = 'none';
             sectionBotones.style.display = 'none';
             containerMensaje.style.display = 'none';
         }
 
+
+    }
+    function detenerMovimiento() {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.velocidadX = 0
+                mokepon.velocidadY = 0
+            }
+        })
+    }
+    function teclaPresionada(event) {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                switch (event.key) {
+                    case 'ArrowUp':
+                        if (mokepon.y > 0) {
+                            console.log(mokepon.y)
+                            mokepon.velocidadY = -5;
+                            btnMovimientoArriba.disabled = false;
+                            btnMovimientoArriba.style.backgroundColor = '#1955de';
+                        } else {
+                            mokepon.velocidadY = 0;
+                            console.log(mokepon.y)
+                            btnMovimientoArriba.disabled = true;
+                            btnMovimientoArriba.style.backgroundColor = '#cccccc';
+                        }
+                        break;
+                    case 'ArrowDown':
+                        if (mokepon.y == 100) {
+                            console.log(mokepon.y)
+                            mokepon.velocidadY = 0;
+                            btnMovimientoAbajo.disabled = true;
+                            btnMovimientoAbajo.style.backgroundColor = '#cccccc';
+                        } else {
+                            mokepon.velocidadY = 5
+                            btnMovimientoAbajo.disabled = false;
+                            btnMovimientoAbajo.style.backgroundColor = '#1955de';
+                        }
+                        break;
+                    case 'ArrowLeft':
+                        if (mokepon.x == 0) {
+                            console.log(mokepon.x)
+                            mokepon.velocidadX = 0
+                            btnMovimientoAtras.disabled = true
+                            btnMovimientoAtras.style.backgroundColor = '#cccccc'
+                        }
+                        else{
+                            mokepon.velocidadX = - 5
+                            btnMovimientoAtras.disabled = false
+                            btnMovimientoAtras.style.backgroundColor = '#1955de'
+                        }
+                        break;
+                    case 'ArrowRight':
+                        if (mokepon.x == 100) {
+                            console.log(mokepon.y)
+                            mokepon.velocidadX = 0;
+                            btnMovimiento.disabled = true;
+                            btnMovimiento.style.backgroundColor = '#cccccc';
+                        } else {
+                            mokepon.velocidadX = 5
+                            btnMovimiento.disabled = false;
+                            btnMovimiento.style.backgroundColor = '#1955de';
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+        })
     }
     function selectAtaqueRival() {
         let eleccionRivalAtaque = numAleatorio(0, logicAtaqueRival.length - 1)
@@ -235,6 +330,7 @@ window.addEventListener('load', () => {
         mensaje.style.width = '90%'
         mensaje.style.textAlign = 'center'
     }
+
     //EVENTOS
     selectMascosta.addEventListener('click', () => {
         let inputChecked = document.querySelector('input[name="mascota"]:checked')
@@ -280,31 +376,38 @@ window.addEventListener('load', () => {
     btnReset.addEventListener('click', (_) => {
         window.location.reload()
     })
-    btnMovimiento.addEventListener('click', () => {
+    btnMovimiento.addEventListener('mousedown', () => {
         arrayMokepon.forEach((mokepon) => {
             if (MascotaSeleccionada === mokepon.nombre) {
-                mokepon.x = mokepon.x + 5
+                mokepon.velocidadX = 5
                 console.log(mokepon.x)
-                pintarPersonaje()
-
-                if (mokepon.x == 100) {
+                if (mokepon.x === 100) {
+                    mokepon.velocidadX = 0
                     btnMovimiento.disabled = true
                     btnMovimiento.style.backgroundColor = '#cccccc'
                 }
-                if(mokepon.x > 0){
+                else if (mokepon.x > 0) {
                     btnMovimientoAtras.disabled = false
                     btnMovimientoAtras.style.backgroundColor = '#1955de'
                 }
             }
         })
-    }) 
-    btnMovimientoAtras.addEventListener('click', () => {
+    })
+    btnMovimiento.addEventListener('mouseup', () => {
         arrayMokepon.forEach((mokepon) => {
             if (MascotaSeleccionada === mokepon.nombre) {
-                mokepon.x = mokepon.x - 5
-                pintarPersonaje()
+                mokepon.velocidadX = 0
+                mokepon.velocidadY = 0
+            }
+        })
+    })
+    btnMovimientoAtras.addEventListener('mousedown', () => {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.velocidadX = - 5
 
-                if(mokepon.x == 0) {
+                if (mokepon.x == 0) {
+                    mokepon.velocidadX = 0
                     btnMovimientoAtras.disabled = true
                     btnMovimientoAtras.style.backgroundColor = '#cccccc'
                 }
@@ -314,19 +417,27 @@ window.addEventListener('load', () => {
                 }
             }
         })
-    } )
-    btnMovimientoAbajo.addEventListener('click', () => {
+    })
+    btnMovimientoAtras.addEventListener('mouseup', () => {
         arrayMokepon.forEach((mokepon) => {
             if (MascotaSeleccionada === mokepon.nombre) {
-                mokepon.y = mokepon.y + 5
-                console.log(mokepon.y)
-                pintarPersonaje()
+                mokepon.velocidadX = 0
+                mokepon.velocidadY = 0
+            }
+        })
+    })
+    btnMovimientoAbajo.addEventListener('mousedown', () => {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.velocidadY = 5
 
-                if (mokepon.y == 100) {
+                if (mokepon.y >= 100) {
+                    mokepon.velocidadY = 0
                     btnMovimientoAbajo.disabled = true
                     btnMovimientoAbajo.style.backgroundColor = '#cccccc'
+                    mokepon.velocidadY = 0
                 }
-                if(mokepon.y > 0){
+                if (mokepon.y > 0) {
                     btnMovimientoArriba.disabled = false
                     btnMovimientoArriba.style.backgroundColor = '#1955de'
                 }
@@ -334,14 +445,22 @@ window.addEventListener('load', () => {
             }
         })
     })
-    btnMovimientoArriba.addEventListener('click', () => {
+    btnMovimientoAbajo.addEventListener('mouseup', () => {
         arrayMokepon.forEach((mokepon) => {
             if (MascotaSeleccionada === mokepon.nombre) {
-                mokepon.y = mokepon.y - 5
-                console.log(mokepon.y)
-                pintarPersonaje()
+                mokepon.velocidadX = 0
+                mokepon.velocidadY = 0
+            }
+        })
+    })
+    btnMovimientoArriba.addEventListener('mousedown', () => {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.velocidadY = - 5
 
-                if(mokepon.y <= 0) {
+
+                if (mokepon.y <= 0) {
+                    mokepon.velocidadY = 0;
                     btnMovimientoArriba.disabled = true
                     btnMovimientoArriba.style.backgroundColor = '#cccccc'
                 }
@@ -350,7 +469,15 @@ window.addEventListener('load', () => {
                     btnMovimientoAbajo.style.backgroundColor = '#1955de'
                 }
             }
-            
+
+        })
+    })
+    btnMovimientoArriba.addEventListener('mouseup', () => {
+        arrayMokepon.forEach((mokepon) => {
+            if (MascotaSeleccionada === mokepon.nombre) {
+                mokepon.velocidadX = 0
+                mokepon.velocidadY = 0
+            }
         })
     })
 })
