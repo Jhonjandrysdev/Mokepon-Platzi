@@ -99,13 +99,13 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
 #box-ataque-rival{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
 #boton-select-mascota:hover{
     background-color: #FFAB5B;
@@ -305,10 +305,8 @@ section > h2{
     text-align: center;
 }
 #mapa{
-    border: 5px solid snow;
-    width: 500px;
-    height: 300px;
-    background-color: rgb(129, 33, 218);
+    border: 2px solid snow;
+    border-radius: 10px;
     margin-bottom: 15px;
 }
 #mover-personaje-adelante{
@@ -471,10 +469,6 @@ section > h2{
     #box-mensaje-rival{
         width: 45%;
 
-    }
-    #mapa{
-        width: 300px;
-        height: 200px;
     }
     #container-buttons-move{
         display: flex;
