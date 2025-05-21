@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
     let anchoMapa = window.innerWidth - 80
     alturaMapa = anchoMapa * 500 / 1000
     let anchoMaximoMapa = 350
-
+    let jugadorId = null
     const mensaje = document.createElement('p')
     const containerMensaje = document.getElementById('mensaje-combate')
     const containerAtaque = document.getElementById('box-ataque')
@@ -128,6 +128,7 @@ window.addEventListener('load', () => {
     })
 
     // FUNCIONES
+
     function pintarMapa() {
         canvas.width = anchoMapa
         canvas.height = alturaMapa
@@ -145,6 +146,17 @@ window.addEventListener('load', () => {
                 lienzoMapa.clearRect(0, 0, canvas.width, canvas.height)
                 lienzoMapa.drawImage(fondoMapa, 0, 0, canvas.width, canvas.height)
                 lienzoMapa.drawImage(mokepon.mapaFoto, mokepon.x, mokepon.y, mokepon.ancho, mokepon.alto)
+                fetch(`http://localhost:8000/mokepon/${jugadorId}/posicion`, {
+                    method: "post",
+                    headers: {
+                        "Content-Type" : "application/json"
+                    },
+                    body: JSON.stringify({
+                        x: mokepon.x,
+                        y: mokepon.y 
+                    })
+                }
+            )
                 pintarRival()
                 if (mokepon.x > 0 || mokepon.y > 0) {
                     revisarColision()
@@ -215,7 +227,7 @@ window.addEventListener('load', () => {
             mensajeEleccionRival.innerHTML = arrayMokepon[eleccionRival].nombre
             MascotaSeleccionadaRival = arrayMokepon[eleccionRival].nombre
             sectionCanvas.style.display = 'flex';
-            intervalo = setInterval(pintarMapa, 30)
+            intervalo = setInterval(pintarMapa, 200)
             window.addEventListener('keydown', teclaPresionada)
             window.addEventListener('keyup', detenerMovimiento)
             sectionAtaque.style.display = 'none';
@@ -399,6 +411,18 @@ window.addEventListener('load', () => {
         mensaje.style.width = '90%'
         mensaje.style.textAlign = 'center'
     }
+    function unirseAlJuego(){
+        fetch(`http://localhost:8000/jugadoresId`)
+            .then(response => { 
+                if (response.ok) {
+                    response.json()
+                     .then(respuesta => {
+                        jugadorId = respuesta.id
+                     })
+                }   
+            })     
+    }
+    unirseAlJuego()
 
 
     //EVENTOS
@@ -442,6 +466,17 @@ window.addEventListener('load', () => {
         } else {
             alert('Selecciona una mascota')
         }
+        fetch(`http://localhost:8000/mokepon/${jugadorId}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                mokepon: MascotaSeleccionada
+                
+            })
+        })
+        console.log(jugadorId)
     })
     btnReset.addEventListener('click', (_) => {
         window.location.reload()
